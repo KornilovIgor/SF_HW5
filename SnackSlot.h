@@ -8,12 +8,18 @@ class SnackSlot
 public:
 	SnackSlot(short slotSize);
 	~SnackSlot();
-	int addSnack(Snack* snack);
-	Snack giveSnack();
+
+	short getSize();
+	short getSnackCount();
+
+	void addSnack(Snack* const snack);
+	bool isEmpty();
+	bool isFilled();
+	void slotShow();
+	Snack* giveSnack();
 
 private:
 	short size = 0;
-	bool slotIsEmpty = true;
 	short snackCount = 0;
-	Snack* slot;
+	Snack** cells = nullptr;
 };

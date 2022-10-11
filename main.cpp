@@ -1,25 +1,36 @@
 #include "VendingMachine.h"
-#include "SnackSlot.h"
-#include "Snack.h"
 
 const int slotCount = 10;
 
 int main() {
 	setlocale(LC_ALL, "");
 
+	int slotCount = 10;
+
 	Snack* bounty = new Snack("Bounty");
-	cout << "Создан Баунти: " << bounty << endl;
 	Snack* snickers = new Snack("Snickers");
-	cout << "Создан Сникерс: " << snickers << endl;
-	SnackSlot* slot = new SnackSlot(10/*количество батончиков, которые помещаются в слот*/);
-	slot->addSnack(bounty); //Добавляем батончик в слот
+	SnackSlot* slot = new SnackSlot(10);
+	SnackSlot* slot1 = new SnackSlot(10);
+
+	slot->addSnack(bounty);
 	slot->addSnack(snickers);
-	VendingMachine* machine = new VendingMachine(slotCount /*Количество слотов для снеков*/);
-	//machine->addSlot(slot); // Помещаем слот обратно в аппарат
+	slot->addSnack(snickers);
 
+	bounty->setEnergy(133);
+	bounty->setPrice(120);
+	snickers->setEnergy(157);
+	snickers->setPrice(125);
 
-	//cout << machine->getEmptySlotsCount(); // Должно выводить количество пустых слотов для снеков
-	//delete machine;
+	VendingMachine* machine = new VendingMachine(slotCount);
+
+	machine->addSlot(slot);
+
+	machine->showProducts();
+	
+	cout << "Пустых слотов: " << machine->getEmptySlotsCount();
+
+	delete machine;
+	delete slot1;
 	delete slot;
 	delete snickers;
 	delete bounty;

@@ -1,39 +1,64 @@
 #include "SnackSLot.h"
 
-SnackSlot::SnackSlot(short slotSize)
+SnackSlot::SnackSlot(const short slotSize)
 {
 	size = slotSize;
-	slot = new Snack[size];
-	cout << slot << endl;
+	cells = new Snack*[size];
+	for (int i = 0; i < size; ++i)
+	{
+		cells[i] = nullptr;
+	} //Интересно нужно ли это делать
 }
 
 SnackSlot::~SnackSlot()
 {
-	delete[] slot;
+	delete[] cells;
 }
 
-int SnackSlot::addSnack(Snack* snack)
+short SnackSlot::getSize()
+{
+	return size;
+}
+
+short SnackSlot::getSnackCount()
+{
+	return snackCount;
+}
+
+void SnackSlot::addSnack(Snack* const snack)
 {
 	if (snackCount < size)
 	{
-		slot[snackCount] = *snack;
-		cout << "Добавлен снек " << snack->getName() << " в ячейку #" << snackCount << endl;
-		++snackCount;
-		return 0;//Снек успешно добавлен
-	}
-	else
-	{
-		return 1;//Слот заполнен
+		cells[snackCount] = snack;
+		++snackCount;	
 	}
 }
 
-Snack SnackSlot::giveSnack()
+bool SnackSlot::isEmpty()
+{
+	return ((snackCount == 0) ? true : false);
+}
+
+bool SnackSlot::isFilled()
+{
+	return ((size == snackCount) ? true : false);
+}
+
+void SnackSlot::slotShow()
+{
+	for (int i = 0; i < snackCount; ++i)
+	{ 
+		cout << " | " << cells[i]->getName();
+	}
+	cout << " | " << endl;
+}
+
+Snack* SnackSlot::giveSnack()
 {
 	if (snackCount > 0)
 	{
 		snackCount--;
-		cout << "Возвращается снек " << slot[snackCount].getName() << endl;
-		return slot[snackCount];
+		return cells[snackCount];
 	}
 }
 
