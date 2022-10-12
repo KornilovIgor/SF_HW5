@@ -5,7 +5,7 @@ const int slotCount = 10;
 int main() {
 	setlocale(LC_ALL, "");
 
-	int slotCount = 3;
+	int slotCount = 10;
 
 	Snack* bounty = new Snack("Bounty");
 	Snack* snickers = new Snack("Snickers");

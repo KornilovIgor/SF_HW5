@@ -16,6 +16,8 @@ public:
 	void addSlot(SnackSlot* slot);
 	Snack giveSnack(int slotNumber);
 	void showProducts();
+	bool isEmpty();
+	bool isFilled();
 	
 
 private:

@@ -58,4 +58,27 @@ void VendingMachine::showProducts()
 	cout << "Всего батончиков в автомате: " << snacksCount << endl;
 }
 
+bool VendingMachine::isEmpty()
+{
+	if (slotsCount == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool VendingMachine::isEmpty()
+{
+	if (slotsCount == size)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
