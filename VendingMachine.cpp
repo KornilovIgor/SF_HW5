@@ -36,8 +36,15 @@ int VendingMachine::getEmptySlotsCount()
 
 void VendingMachine::addSlot(SnackSlot* slot)
 {
-	slots[slotsCount] = slot;
-	++slotsCount;
+	if (this->isFilled() == true)
+	{
+		cout << "Машина заполнена. Слот не добавлен" << endl << endl;
+	}
+	else
+	{
+		slots[slotsCount] = slot;
+		++slotsCount;
+	}
 }
 
 Snack VendingMachine::giveSnack(int slotNumber)
@@ -70,7 +77,7 @@ bool VendingMachine::isEmpty()
 	}
 }
 
-bool VendingMachine::isEmpty()
+bool VendingMachine::isFilled()
 {
 	if (slotsCount == size)
 	{
