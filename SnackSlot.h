@@ -6,17 +6,19 @@ using namespace std;
 class SnackSlot
 {
 public:
-	SnackSlot(short slotSize);
+	SnackSlot(short const slotSize);
 	~SnackSlot();
 
 	short getSize();
+	void setSize(short size);
 	short getSnackCount();
+	void setSnackCount(short snackCount);
 
 	void addSnack(Snack* const snack);
 	bool isEmpty();
 	bool isFilled();
 	void slotShow();
-	Snack* giveSnack();
+	Snack giveSnack();
 
 private:
 	short size = 0;

@@ -1,13 +1,9 @@
 #include "SnackSLot.h"
 
-SnackSlot::SnackSlot(const short slotSize)
+SnackSlot::SnackSlot(short const slotSize)
 {
 	size = slotSize;
-	cells = new Snack*[size];
-	for (int i = 0; i < size; ++i)
-	{
-		cells[i] = nullptr;
-	} //Интересно нужно ли это делать
+	cells = new Snack* [size];
 }
 
 SnackSlot::~SnackSlot()
@@ -20,9 +16,19 @@ short SnackSlot::getSize()
 	return size;
 }
 
+void SnackSlot::setSize(short size)
+{
+	this->size = size;
+}
+
 short SnackSlot::getSnackCount()
 {
 	return snackCount;
+}
+
+void SnackSlot::setSnackCount(short snackCount)
+{
+	this->snackCount = snackCount;
 }
 
 void SnackSlot::addSnack(Snack* const snack)
@@ -30,7 +36,7 @@ void SnackSlot::addSnack(Snack* const snack)
 	if (snackCount < size)
 	{
 		cells[snackCount] = snack;
-		++snackCount;	
+		++snackCount;
 	}
 }
 
@@ -53,12 +59,11 @@ void SnackSlot::slotShow()
 	cout << " | " << endl;
 }
 
-Snack* SnackSlot::giveSnack()
+Snack SnackSlot::giveSnack()
 {
 	if (snackCount > 0)
 	{
 		snackCount--;
-		return cells[snackCount];
+		return *cells[snackCount];
 	}
 }
-

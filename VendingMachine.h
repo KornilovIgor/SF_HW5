@@ -14,6 +14,7 @@ public:
 	int getEmptySlotsCount();
 
 	void addSlot(SnackSlot* slot);
+	Snack giveSnack(int slotNumber);
 	void showProducts();
 	
 
@@ -22,5 +23,5 @@ private:
 	int emptySlotsCount = 0;
 	int slotsCount = 0;
 	int snacksCount = 0;
-	SnackSlot** slots = nullptr;
+	SnackSlot** slots;
 };

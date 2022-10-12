@@ -5,7 +5,6 @@ using namespace std;
 class Snack
 {
 public:
-	Snack();
 	Snack(string snackName);
 	Snack(string snackName, float priceValue);
 	Snack(string snackName, float priceValue, short energyValue);

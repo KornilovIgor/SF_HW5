@@ -1,18 +1,17 @@
 #include "Snack.h"
 
-Snack::Snack()
-{
-}
-
 Snack::Snack(string snackName)
 {
 	name = snackName;
+	price = 0;
+	energy = 0;
 }
 
 Snack::Snack(string snackName, float priceValue)
 {
 	name = snackName;
 	price = priceValue;
+	energy = 0;
 }
 
 Snack::Snack(string snackName, float priceValue, short energyValue)
