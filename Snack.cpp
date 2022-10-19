@@ -1,5 +1,9 @@
 #include "Snack.h"
 
+Snack::Snack()
+{
+}
+
 Snack::Snack(string snackName)
 {
 	name = snackName;

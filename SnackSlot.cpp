@@ -1,14 +1,20 @@
 #include "SnackSLot.h"
+#include <iostream>
+using namespace std;
+
+SnackSlot::SnackSlot()
+{
+}
 
 SnackSlot::SnackSlot(short const slotSize)
 {
 	size = slotSize;
-	cells = new Snack* [size];
+	snacks = new Snack [size];
 }
 
 SnackSlot::~SnackSlot()
 {
-	delete[] cells;
+	delete[] snacks;
 }
 
 short SnackSlot::getSize()
@@ -16,33 +22,24 @@ short SnackSlot::getSize()
 	return size;
 }
 
-void SnackSlot::setSize(short size)
-{
-	this->size = size;
-}
-
 short SnackSlot::getSnackCount()
 {
 	return snackCount;
 }
 
-void SnackSlot::setSnackCount(short snackCount)
-{
-	this->snackCount = snackCount;
-}
-
-void SnackSlot::addSnack(Snack* const snack)
+void SnackSlot::addSnack(const Snack* const snack)
 {
 	if (snackCount < size)
 	{
-		cells[snackCount] = snack;
+		snacks[snackCount] = *snack;
 		++snackCount;
+		emptySlot = false;
 	}
 }
 
 bool SnackSlot::isEmpty()
 {
-	return ((snackCount == 0) ? true : false);
+	return emptySlot;
 }
 
 bool SnackSlot::isFilled()
@@ -52,11 +49,18 @@ bool SnackSlot::isFilled()
 
 void SnackSlot::slotShow()
 {
-	for (int i = 0; i < snackCount; ++i)
-	{ 
-		cout << " | " << cells[i]->getName();
+	if (emptySlot)
+	{
+		cout << " | пустой слот" << endl;
 	}
-	cout << " | " << endl;
+	else
+	{
+		for (int i = 0; i < snackCount; ++i)
+		{ 
+			cout << " | " << snacks[i].getName();
+		}
+		cout << " | " << endl;
+	}
 }
 
 Snack SnackSlot::giveSnack()
@@ -64,6 +68,10 @@ Snack SnackSlot::giveSnack()
 	if (snackCount > 0)
 	{
 		snackCount--;
-		return *cells[snackCount];
+		if (snackCount == 0)
+		{
+			emptySlot = true;
+		}
+		return snacks[snackCount];
 	}
 }

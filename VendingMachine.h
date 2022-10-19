@@ -1,7 +1,5 @@
 #pragma once
 #include "SnackSlot.h"
-#include <iostream>
-using namespace std;
 
 class VendingMachine
 {
@@ -21,9 +19,9 @@ public:
 	
 
 private:
-	int size = 0;
-	int emptySlotsCount = 0;
-	int slotsCount = 0;
+	int _size = 0;
+	int _emptySlotsCount = 0;
+	int _slotsCount = 0;
 	int snacksCount = 0;
-	SnackSlot** slots;
+	SnackSlot* slots = nullptr;
 };

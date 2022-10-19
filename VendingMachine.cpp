@@ -1,37 +1,39 @@
 #include "VendingMachine.h"
+#include <iostream>
+using namespace std;
 
 VendingMachine::VendingMachine(int countMaxSlots)
 {
-	size = countMaxSlots;
-	slots = new SnackSlot*[countMaxSlots];
+	_size = countMaxSlots;
+	slots = new SnackSlot[countMaxSlots];
 }
 
 VendingMachine::~VendingMachine()
 {
-	delete[] slots;
+//	delete[] slots; //так и не понял почему ошибка если это раскомментировать :(
 }
 
 int VendingMachine::getSize()
 {
-	return size;
+	return _size;
 }
 
 int VendingMachine::getSlotsCount()
 {
-	return slotsCount;
+	return _slotsCount;
 }
 
 int VendingMachine::getEmptySlotsCount()
 {
-	emptySlotsCount = 0;
-	for (int i = 0; i < slotsCount; ++i)
+	_emptySlotsCount = 0;
+	for (int i = 0; i < _size; ++i)
 	{
-		if ((slots[i]->isEmpty()) == true)
+		if ((slots[i].isEmpty()) == true)
 		{
-			++emptySlotsCount;
+			++_emptySlotsCount;
 		}
 	}
-	return emptySlotsCount;
+	return _emptySlotsCount;
 }
 
 void VendingMachine::addSlot(SnackSlot* slot)
@@ -42,32 +44,39 @@ void VendingMachine::addSlot(SnackSlot* slot)
 	}
 	else
 	{
-		slots[slotsCount] = slot;
-		++slotsCount;
+		for (int i = 0; i < _size; ++i)
+		{
+			if ((slots[i].isEmpty()) == true)
+			{ 
+				slots[i] = *slot;
+				++_slotsCount;
+				break;
+			}
+		}
 	}
 }
 
 Snack VendingMachine::giveSnack(int slotNumber)
 {
-	return slots[slotNumber]->giveSnack();
+	return slots[slotNumber].giveSnack();
 }
 
 void VendingMachine::showProducts()
 {
 	cout << "Состояние автомата: " << endl;
 	snacksCount = 0;
-	for (int i = 0; i < slotsCount; ++i)
+	for (int i = 0; i < _size; ++i)
 	{
 		cout << "Слот №" << i;
-		slots[i]->slotShow();
-		snacksCount += slots[i]->getSnackCount();
+		slots[i].slotShow();
+		snacksCount += slots[i].getSnackCount();
 	}
-	cout << "Всего батончиков в автомате: " << snacksCount << endl;
+	cout << "Всего батончиков в автомате: " << snacksCount << endl << endl;
 }
 
 bool VendingMachine::isEmpty()
 {
-	if (slotsCount == 0)
+	if (_slotsCount == 0)
 	{
 		return true;
 	}
@@ -79,7 +88,7 @@ bool VendingMachine::isEmpty()
 
 bool VendingMachine::isFilled()
 {
-	if (slotsCount == size)
+	if (_slotsCount == _size)
 	{
 		return true;
 	}
