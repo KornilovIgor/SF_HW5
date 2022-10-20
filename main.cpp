@@ -1,7 +1,6 @@
+#include "VendingMachine.h"
 #include <iostream>
 using namespace std;
-
-#include "VendingMachine.h"
 
 int main() {
 	setlocale(LC_ALL, "");
