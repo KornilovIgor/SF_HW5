@@ -2,13 +2,10 @@
 #include <iostream>
 using namespace std;
 
-SnackSlot::SnackSlot()
+SnackSlot::SnackSlot(short size) : _size(size)
 {
-}
-
-SnackSlot::SnackSlot(short const size) : _size(size)
-{
-	_snacks = new Snack [_size];
+	_snackCount = 0;
+	_snacks = new Snack* [_size];
 }
 
 SnackSlot::~SnackSlot()
@@ -26,45 +23,20 @@ short SnackSlot::getSnackCount()
 	return _snackCount;
 }
 
-void SnackSlot::addSnack(const Snack* const snack)
+void SnackSlot::addSnack(Snack* snack)
 {
 	if (_snackCount < _size)
 	{
-		_snacks[_snackCount] = *snack;
+		_snacks[_snackCount] = snack;
 		++_snackCount;
 	}
 }
 
-bool SnackSlot::isEmpty()
-{
-	if (_snackCount == 0)
-	{ 
-		return true;
-	}
-	return false;
-}
-
-void SnackSlot::slotShow()
-{
-	if (isEmpty())
-	{
-		cout << " | пустой слот" << endl;
-	}
-	else
-	{
-		for (int i = 0; i < _snackCount; ++i)
-		{ 
-			cout << " | " << _snacks[i].getName();
-		}
-		cout << " | " << endl;
-	}
-}
-
-Snack SnackSlot::giveSnack()
+void SnackSlot::giveSnack()
 {
 	if (_snackCount > 0)
 	{
-		_snackCount--;
-		return _snacks[_snackCount];
+		--_snackCount;
+		cout << "Выдан батончик: " << _snacks[_snackCount]->getName() << endl;
 	}
 }

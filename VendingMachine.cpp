@@ -4,12 +4,13 @@ using namespace std;
 
 VendingMachine::VendingMachine(int size) : _size(size)
 {
-	slots = new SnackSlot[size];
+	_emptySlotsCount = _size;
+	slots = new SnackSlot*[size];
 }
 
 VendingMachine::~VendingMachine()
 {
-	//delete[] slots; //так и не понял почему ошибка если это раскомментировать :(
+	delete[] slots;
 }
 
 int VendingMachine::getSize()
@@ -19,51 +20,28 @@ int VendingMachine::getSize()
 
 int VendingMachine::getEmptySlotsCount()
 {
-	_emptySlotsCount = 0;
-	for (int i = 0; i < _size; ++i)
-	{
-		if ((slots[i].isEmpty()) == true)
-		{
-			++_emptySlotsCount;
-		}
-	}
 	return _emptySlotsCount;
+}
+
+int VendingMachine::getSnacksCount()
+{
+	return _snacksCount;
 }
 
 void VendingMachine::addSlot(SnackSlot* slot)
 {
-	if (getEmptySlotsCount() == 0)
-	{
-		cout << "Машина заполнена. Слот не загружен" << endl << endl;
-	}
-	else
-	{
-		for (int i = 0; i < _size; ++i)
-		{
-			if ((slots[i].isEmpty()) == true)
-			{ 
-				slots[i] = *slot;
-				break;
-			}
-		}
-	}
+	slots[_slotCount] = slot;
+	--_emptySlotsCount;
+	++_slotCount;
+	_snacksCount += slot->getSnackCount();
 }
 
-Snack VendingMachine::giveSnack(int slotNumber)
+void VendingMachine::giveSnack()
 {
-	return slots[slotNumber].giveSnack();
-}
-
-void VendingMachine::showProducts()
-{
-	cout << "Состояние автомата: " << endl;
-	snacksCount = 0;
-	for (int i = 0; i < _size; ++i)
+	--_snacksCount;
+	slots[_slotCount - 1]->giveSnack();
+	if (slots[_slotCount - 1]->getSnackCount() == 0)
 	{
-		cout << "Слот №" << i;
-		slots[i].slotShow();
-		snacksCount += slots[i].getSnackCount();
+		++_emptySlotsCount;
 	}
-	cout << "Всего батончиков в автомате: " << snacksCount << endl << endl;
 }
-

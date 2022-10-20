@@ -4,20 +4,17 @@
 class SnackSlot
 {
 public:
-	SnackSlot();
-	SnackSlot(short const slotSize);
+	SnackSlot(short slotSize);
 	~SnackSlot();
 
 	short getSize();
 	short getSnackCount();
 
-	void addSnack(const Snack* const snack);
-	bool isEmpty();
-	void slotShow();
-	Snack giveSnack();
+	void addSnack(Snack* snack);
+	void giveSnack();
 
 private:
 	short _size = 0;
 	short _snackCount = 0;
-	Snack* _snacks = nullptr;
+	Snack** _snacks = nullptr;
 };

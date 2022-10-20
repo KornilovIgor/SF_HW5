@@ -9,15 +9,15 @@ public:
 
 	int getSize();
 	int getEmptySlotsCount();
+	int getSnacksCount();
 
 	void addSlot(SnackSlot* slot);
-	Snack giveSnack(int slotNumber);
-	void showProducts();	
+	void giveSnack();
 
 private:
-	int _size = 0;
+	int _size;
+	int _slotCount = 0;
 	int _emptySlotsCount = 0;
-	int snacksCount = 0;
-	bool filled = false;
-	SnackSlot* slots = nullptr;
+	int _snacksCount = 0;
+	SnackSlot** slots = nullptr;
 };
