@@ -28,6 +28,17 @@ int main() {
 	cout << "Количество продуктов в автомате: "
 		<< machine->getSnacksCount() << endl;
 
+	cout << "Количество пустых слотов для снеков: "
+		<< machine->getEmptySlotsCount() << endl;
+
+	machine->giveSnack();
+
+	cout << "Количество продуктов в автомате: "
+		<< machine->getSnacksCount() << endl;
+
+	cout << "Количество пустых слотов для снеков: "
+		<< machine->getEmptySlotsCount() << endl;
+
 	delete machine;
 	delete slot;
 	delete snickers;

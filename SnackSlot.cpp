@@ -29,6 +29,7 @@ void SnackSlot::addSnack(Snack* snack)
 	{
 		_snacks[_snackCount] = snack;
 		++_snackCount;
+		cout << "В слот добавлен батончик: " << snack->getName() << endl;
 	}
 }
 
