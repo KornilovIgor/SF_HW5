@@ -32,19 +32,21 @@ void SnackSlot::addSnack(const Snack* const snack)
 	{
 		_snacks[_snackCount] = *snack;
 		++_snackCount;
-		_emptySlot = false;
-		
 	}
 }
 
 bool SnackSlot::isEmpty()
 {
-	return _emptySlot;
+	if (_snackCount == 0)
+	{ 
+		return true;
+	}
+	return false;
 }
 
 void SnackSlot::slotShow()
 {
-	if (_emptySlot)
+	if (isEmpty())
 	{
 		cout << " | пустой слот" << endl;
 	}
@@ -63,10 +65,6 @@ Snack SnackSlot::giveSnack()
 	if (_snackCount > 0)
 	{
 		_snackCount--;
-		if (_snackCount == 0)
-		{
-			_emptySlot = true;
-		}
 		return _snacks[_snackCount];
 	}
 }

@@ -8,8 +8,8 @@
 int main() {
 	setlocale(LC_ALL, "");
 
-	/*
-	Snack* bounty = new Snack("Bounty");
+	
+	/*Snack* bounty = new Snack("Bounty");
 	Snack* snickers = new Snack("Snickers");
 	SnackSlot* slot = new SnackSlot(10);
 	slot->addSnack(bounty); //Добавляем батончик в слот

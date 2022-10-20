@@ -17,7 +17,6 @@ public:
 	Snack giveSnack();
 
 private:
-	bool _emptySlot = true;
 	short _size = 0;
 	short _snackCount = 0;
 	Snack* _snacks = nullptr;
