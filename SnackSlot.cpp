@@ -2,8 +2,9 @@
 #include <iostream>
 using namespace std;
 
-SnackSlot::SnackSlot(short size) : _size(size)
-{
+SnackSlot::SnackSlot(short size) 
+{	
+	_size = size;
 	_snackCount = 0;
 	_snacks = new Snack* [_size];
 }
@@ -13,12 +14,12 @@ SnackSlot::~SnackSlot()
 	delete[] _snacks;
 }
 
-short SnackSlot::getSize()
+short SnackSlot::getSize() const
 {
 	return _size;
 }
 
-short SnackSlot::getSnackCount()
+short SnackSlot::getSnackCount() const
 {
 	return _snackCount;
 }

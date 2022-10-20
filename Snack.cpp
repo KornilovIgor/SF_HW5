@@ -1,57 +1,57 @@
 #include "Snack.h"
+#include <iostream>
+using namespace std;
 
-Snack::Snack(string snackName)
+Snack::Snack(const std::string& name)
 {
-	name = snackName;
-	price = 0;
-	energy = 0;
+	_name = name;
+	_price = 0;
+	_energy = 0;
 }
 
 
-Snack::Snack(string snackName, float priceValue)
+Snack::Snack(const std::string& name, double priceValue)
 {
-	name = snackName;
-	price = priceValue;
-	energy = 0;
+	_name = name;
+	_price = priceValue;
+	_energy = 0;
 }
 
-Snack::Snack(string snackName, float priceValue, short energyValue)
+Snack::Snack(const std::string& name, double priceValue, int energyValue)
 {
-	name = snackName;
-	price = priceValue;
-	energy = energyValue;
+	_name = name;
+	_price = priceValue;
+	_energy = energyValue;
 }
 
-Snack::~Snack()
+Snack::~Snack() = default;
+
+void Snack::setName(const std::string& name)
 {
+	_name = name;
 }
 
-void Snack::setName(string snackName)
+void Snack::setPrice(double value)
 {
-	name = snackName;
+	_price = value;
 }
 
-void Snack::setPrice(float priceValue)
+void Snack::setEnergy(int value)
 {
-	price = priceValue;
+	_energy = value;
 }
 
-void Snack::setEnergy(unsigned short energyValue)
+string Snack::getName() const
 {
-	energy = energyValue;
+	return _name;
 }
 
-string Snack::getName()
+double Snack::getPrice() const
 {
-	return name;
+	return _price;
 }
 
-float Snack::getPrice()
+int Snack::getEnergy() const
 {
-	return price;
-}
-
-unsigned short Snack::getEnergy()
-{
-	return energy;
+	return _energy;
 }

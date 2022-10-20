@@ -7,14 +7,14 @@ public:
 	SnackSlot(short slotSize);
 	~SnackSlot();
 
-	short getSize();
-	short getSnackCount();
+	short getSize() const;
+	short getSnackCount() const;
 
 	void addSnack(Snack* snack);
 	void giveSnack();
 
 private:
-	short _size = 0;
-	short _snackCount = 0;
-	Snack** _snacks = nullptr;
+	short _size;
+	short _snackCount;
+	Snack** _snacks;
 };

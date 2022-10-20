@@ -7,17 +7,17 @@ public:
 	VendingMachine(int maxCountSlots);
 	~VendingMachine();
 
-	int getSize();
-	int getEmptySlotsCount();
-	int getSnacksCount();
+	int getSize() const;
+	int getEmptySlotsCount() const;
+	int getSnacksCount() const;
 
 	void addSlot(SnackSlot* slot);
 	void giveSnack();
 
 private:
 	int _size;
-	int _slotCount = 0;
-	int _emptySlotsCount = 0;
-	int _snacksCount = 0;
-	SnackSlot** slots = nullptr;
+	int _slotCount;
+	int _emptySlotsCount;
+	int _snacksCount;
+	SnackSlot** slots;
 };

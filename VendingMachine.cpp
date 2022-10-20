@@ -2,10 +2,14 @@
 #include <iostream>
 using namespace std;
 
-VendingMachine::VendingMachine(int size) : _size(size)
+VendingMachine::VendingMachine(int size)
 {
+	_size = size;
+	_slotCount = 0;
 	_emptySlotsCount = _size;
+	_snacksCount = 0;
 	slots = new SnackSlot*[size];
+
 }
 
 VendingMachine::~VendingMachine()
@@ -13,17 +17,17 @@ VendingMachine::~VendingMachine()
 	delete[] slots;
 }
 
-int VendingMachine::getSize()
+int VendingMachine::getSize() const
 {
 	return _size;
 }
 
-int VendingMachine::getEmptySlotsCount()
+int VendingMachine::getEmptySlotsCount() const
 {
 	return _emptySlotsCount;
 }
 
-int VendingMachine::getSnacksCount()
+int VendingMachine::getSnacksCount() const
 {
 	return _snacksCount;
 }

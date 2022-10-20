@@ -1,25 +1,24 @@
 #pragma once
 #include <iostream>
-using namespace std;
 
 class Snack
 {
 public:
-	Snack(string snackName);
-	Snack(string snackName, float priceValue);
-	Snack(string snackName, float priceValue, short energyValue);
+	Snack(const std::string& name);
+	Snack(const std::string& name, double priceValue);
+	Snack(const std::string& name, double priceValue, int energyValue);
 	~Snack();
 
-	void setName(string snackName);
-	void setPrice(float priceValue);
-	void setEnergy(unsigned short energyValue);
+	void setName(const std::string& name);
+	void setPrice(double value);
+	void setEnergy(int value);
 
-	string getName();
-	float getPrice();
-	unsigned short getEnergy();
+	std::string getName() const;
+	double getPrice() const;
+	int getEnergy() const;
 
 private:
-	string name;
-	float price;
-	short energy;
+	std::string _name;
+	double _price;
+	int _energy;
 };
