@@ -8,7 +8,7 @@
 int main() {
 	setlocale(LC_ALL, "");
 
-	
+	/*
 	Snack* bounty = new Snack("Bounty");
 	Snack* snickers = new Snack("Snickers");
 	SnackSlot* slot = new SnackSlot(10);
@@ -22,10 +22,10 @@ int main() {
 	delete machine;
 	delete slot;
 	delete snickers;
-	delete bounty;
+	delete bounty;*/
 
 
-	/*
+	
 	int slotCount = 5;
 
 	Snack* bounty = new Snack("Bounty");
@@ -77,7 +77,7 @@ int main() {
 	delete slot2;
 	delete slot1;
 	delete snickers;
-	delete bounty;*/
+	delete bounty;
 
 
 	_CrtDumpMemoryLeaks();

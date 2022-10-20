@@ -34,7 +34,7 @@ void VendingMachine::addSlot(SnackSlot* slot)
 {
 	if (getEmptySlotsCount() == 0)
 	{
-		cout << "Машина заполнена. Слот не добавлен" << endl << endl;
+		cout << "Машина заполнена. Слот не загружен" << endl << endl;
 	}
 	else
 	{

@@ -31,7 +31,6 @@ void SnackSlot::addSnack(const Snack* const snack)
 	if (_snackCount < _size)
 	{
 		_snacks[_snackCount] = *snack;
-		cout << "В слот добален батончик " << _snacks[_snackCount].getName() << endl;
 		++_snackCount;
 		_emptySlot = false;
 		
