@@ -6,58 +6,54 @@ SnackSlot::SnackSlot()
 {
 }
 
-SnackSlot::SnackSlot(short const slotSize)
+SnackSlot::SnackSlot(short const size) : _size(size)
 {
-	size = slotSize;
-	snacks = new Snack [size];
+	_snacks = new Snack [_size];
 }
 
 SnackSlot::~SnackSlot()
 {
-	delete[] snacks;
+	delete[] _snacks;
 }
 
 short SnackSlot::getSize()
 {
-	return size;
+	return _size;
 }
 
 short SnackSlot::getSnackCount()
 {
-	return snackCount;
+	return _snackCount;
 }
 
 void SnackSlot::addSnack(const Snack* const snack)
 {
-	if (snackCount < size)
+	if (_snackCount < _size)
 	{
-		snacks[snackCount] = *snack;
-		++snackCount;
-		emptySlot = false;
+		_snacks[_snackCount] = *snack;
+		cout << "В слот добален батончик " << _snacks[_snackCount].getName() << endl;
+		++_snackCount;
+		_emptySlot = false;
+		
 	}
 }
 
 bool SnackSlot::isEmpty()
 {
-	return emptySlot;
-}
-
-bool SnackSlot::isFilled()
-{
-	return ((size == snackCount) ? true : false);
+	return _emptySlot;
 }
 
 void SnackSlot::slotShow()
 {
-	if (emptySlot)
+	if (_emptySlot)
 	{
 		cout << " | пустой слот" << endl;
 	}
 	else
 	{
-		for (int i = 0; i < snackCount; ++i)
+		for (int i = 0; i < _snackCount; ++i)
 		{ 
-			cout << " | " << snacks[i].getName();
+			cout << " | " << _snacks[i].getName();
 		}
 		cout << " | " << endl;
 	}
@@ -65,13 +61,13 @@ void SnackSlot::slotShow()
 
 Snack SnackSlot::giveSnack()
 {
-	if (snackCount > 0)
+	if (_snackCount > 0)
 	{
-		snackCount--;
-		if (snackCount == 0)
+		_snackCount--;
+		if (_snackCount == 0)
 		{
-			emptySlot = true;
+			_emptySlot = true;
 		}
-		return snacks[snackCount];
+		return _snacks[_snackCount];
 	}
 }

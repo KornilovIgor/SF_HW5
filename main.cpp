@@ -8,22 +8,24 @@
 int main() {
 	setlocale(LC_ALL, "");
 
-	/*
+	
 	Snack* bounty = new Snack("Bounty");
 	Snack* snickers = new Snack("Snickers");
 	SnackSlot* slot = new SnackSlot(10);
-	/*slot->addSnack(bounty); //Добавляем батончик в слот
+	slot->addSnack(bounty); //Добавляем батончик в слот
 	slot->addSnack(snickers);
 	VendingMachine* machine = new VendingMachine(5);
-	/*machine->addSlot(slot); // Помещаем слот обратно в аппарат
+	machine->addSlot(slot); // Помещаем слот обратно в аппарат
 
 	cout << machine->getEmptySlotsCount(); // Должно выводить количество пустых слотов для снеков
+	
 	delete machine;
 	delete slot;
 	delete snickers;
 	delete bounty;
-	*/
 
+
+	/*
 	int slotCount = 5;
 
 	Snack* bounty = new Snack("Bounty");
@@ -75,7 +77,7 @@ int main() {
 	delete slot2;
 	delete slot1;
 	delete snickers;
-	delete bounty;
+	delete bounty;*/
 
 
 	_CrtDumpMemoryLeaks();

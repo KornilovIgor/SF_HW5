@@ -2,25 +2,19 @@
 #include <iostream>
 using namespace std;
 
-VendingMachine::VendingMachine(int countMaxSlots)
+VendingMachine::VendingMachine(int size) : _size(size)
 {
-	_size = countMaxSlots;
-	slots = new SnackSlot[countMaxSlots];
+	slots = new SnackSlot[size];
 }
 
 VendingMachine::~VendingMachine()
 {
-//	delete[] slots; //так и не понял почему ошибка если это раскомментировать :(
+	//delete[] slots; //так и не понял почему ошибка если это раскомментировать :(
 }
 
 int VendingMachine::getSize()
 {
 	return _size;
-}
-
-int VendingMachine::getSlotsCount()
-{
-	return _slotsCount;
 }
 
 int VendingMachine::getEmptySlotsCount()
@@ -38,7 +32,7 @@ int VendingMachine::getEmptySlotsCount()
 
 void VendingMachine::addSlot(SnackSlot* slot)
 {
-	if (this->isFilled() == true)
+	if (getEmptySlotsCount() == 0)
 	{
 		cout << "Машина заполнена. Слот не добавлен" << endl << endl;
 	}
@@ -49,7 +43,6 @@ void VendingMachine::addSlot(SnackSlot* slot)
 			if ((slots[i].isEmpty()) == true)
 			{ 
 				slots[i] = *slot;
-				++_slotsCount;
 				break;
 			}
 		}
@@ -72,29 +65,5 @@ void VendingMachine::showProducts()
 		snacksCount += slots[i].getSnackCount();
 	}
 	cout << "Всего батончиков в автомате: " << snacksCount << endl << endl;
-}
-
-bool VendingMachine::isEmpty()
-{
-	if (_slotsCount == 0)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}
-
-bool VendingMachine::isFilled()
-{
-	if (_slotsCount == _size)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
 }
 

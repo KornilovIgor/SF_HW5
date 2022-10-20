@@ -2,6 +2,9 @@
 
 Snack::Snack()
 {
+	name = "noname";
+	price = 0;
+	energy = 0;
 }
 
 Snack::Snack(string snackName)

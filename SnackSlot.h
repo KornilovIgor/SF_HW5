@@ -13,13 +13,12 @@ public:
 
 	void addSnack(const Snack* const snack);
 	bool isEmpty();
-	bool isFilled();
 	void slotShow();
 	Snack giveSnack();
 
 private:
-	bool emptySlot = true;
-	short size = 0;
-	short snackCount = 0;
-	Snack* snacks = nullptr;
+	bool _emptySlot = true;
+	short _size = 0;
+	short _snackCount = 0;
+	Snack* _snacks = nullptr;
 };

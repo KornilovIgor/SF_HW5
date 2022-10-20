@@ -8,20 +8,16 @@ public:
 	~VendingMachine();
 
 	int getSize();
-	int getSlotsCount();
 	int getEmptySlotsCount();
 
 	void addSlot(SnackSlot* slot);
 	Snack giveSnack(int slotNumber);
-	void showProducts();
-	bool isEmpty();
-	bool isFilled();
-	
+	void showProducts();	
 
 private:
 	int _size = 0;
 	int _emptySlotsCount = 0;
-	int _slotsCount = 0;
 	int snacksCount = 0;
+	bool filled = false;
 	SnackSlot* slots = nullptr;
 };
