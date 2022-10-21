@@ -24,8 +24,6 @@ Snack::Snack(const std::string& name, double priceValue, int energyValue)
 	_energy = energyValue;
 }
 
-Snack::~Snack() = default;
-
 void Snack::setName(const std::string& name)
 {
 	_name = name;
