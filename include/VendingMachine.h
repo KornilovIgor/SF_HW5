@@ -1,10 +1,11 @@
 #pragma once
+
 #include "SnackSlot.h"
 
 class VendingMachine
 {
 public:
-	VendingMachine(int maxCountSlots);
+	explicit VendingMachine(int maxCountSlots);
 	~VendingMachine();
 
 	int getSize() const;

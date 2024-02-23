@@ -1,10 +1,11 @@
 #pragma once
+
 #include <iostream>
 
 class Snack
 {
 public:
-	Snack(const std::string& name);
+	explicit Snack(const std::string& name);
 	Snack(const std::string& name, double priceValue);
 	Snack(const std::string& name, double priceValue, int energyValue);
 	~Snack() = default;

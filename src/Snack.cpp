@@ -1,6 +1,6 @@
 #include "Snack.h"
+
 #include <iostream>
-using namespace std;
 
 Snack::Snack(const std::string& name)
 {
@@ -39,7 +39,7 @@ void Snack::setEnergy(int value)
 	_energy = value;
 }
 
-string Snack::getName() const
+std::string Snack::getName() const
 {
 	return _name;
 }

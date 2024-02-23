@@ -1,6 +1,4 @@
 #include "VendingMachine.h"
-#include <iostream>
-using namespace std;
 
 VendingMachine::VendingMachine(int size)
 {

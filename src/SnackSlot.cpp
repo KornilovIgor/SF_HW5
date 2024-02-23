@@ -1,9 +1,10 @@
-#include "SnackSLot.h"
+#include "SnackSlot.h"
+
 #include <iostream>
 using namespace std;
 
-SnackSlot::SnackSlot(short size) 
-{	
+SnackSlot::SnackSlot(short size)
+{
 	_size = size;
 	_snackCount = 0;
 	_snacks = new Snack* [_size];
@@ -30,7 +31,7 @@ void SnackSlot::addSnack(Snack* snack)
 	{
 		_snacks[_snackCount] = snack;
 		++_snackCount;
-		cout << "В слот добавлен батончик: " << snack->getName() << endl;
+		cout << "Snack added: " << snack->getName() << endl;
 	}
 }
 
@@ -39,6 +40,6 @@ void SnackSlot::giveSnack()
 	if (_snackCount > 0)
 	{
 		--_snackCount;
-		cout << "Выдан батончик: " << _snacks[_snackCount]->getName() << endl;
+		cout << "Dispense a snack: " << _snacks[_snackCount]->getName() << endl;
 	}
 }

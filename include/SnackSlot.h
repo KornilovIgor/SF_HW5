@@ -1,10 +1,11 @@
 #pragma once
+
 #include "Snack.h"
 
 class SnackSlot
 {
 public:
-	SnackSlot(short slotSize);
+	explicit SnackSlot(short slotSize);
 	~SnackSlot();
 
 	short getSize() const;
